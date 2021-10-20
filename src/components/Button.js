@@ -2,12 +2,13 @@ import React from 'react'
 import { Dimensions, StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 
 const WIDTH = Dimensions.get('window').width
-export default function Button({title,backColor,bWidth,onpress}) {
+export default function Button({title,backColor,bWidth,onpress,width,disable}) {
     return (
         <TouchableOpacity
+        disabled={disable}
         onPress={onpress}
         activeOpacity ={0.7}
-        style={{...styles.buttonContainer,backgroundColor:backColor,borderWidth:bWidth,borderColor:'#515965'}}>
+        style={{...styles.buttonContainer,backgroundColor:backColor,borderWidth:bWidth,borderColor:'#515965',width:width}}>
 
             <Text style={styles.buttonText}>{title}</Text>
           

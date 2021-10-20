@@ -8,7 +8,8 @@ import {
   Dimensions,
 } from "react-native";
 
-const HEIGHT = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+const WIDTH = Dimensions.get("window").width;
 
 import Button from "../components/Button";
 export default function WelcomeScreen({ navigation }) {
@@ -38,12 +39,17 @@ export default function WelcomeScreen({ navigation }) {
 
           <View style={styles.buttonsContainer}>
             <Button
+              width ={WIDTH-80}
               title="Sign in"
               backColor="#293241"
               bWidth={2}
               onpress={() => navigation.navigate("LoginScreen")}
             />
-            <Button title="Sign up" backColor="#E12836" bWidth={0} />
+            <Button
+            width ={WIDTH-80}
+            title="Sign up" backColor="#E12836" bWidth={0}
+                 onpress={() => navigation.navigate("SignUpScreen")}
+            />
           </View>
         </View>
       </View>

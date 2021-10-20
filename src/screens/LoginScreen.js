@@ -23,7 +23,7 @@ export default function LoginScreen({ navigation }) {
   const [password, setPassword] = React.useState("");
   return (
     <ImageBackground
-      resizeMode={"contain"}
+      resizeMode={"cover"}
       source={require("../images/loginBack.jpg")}
       style={styles.container}
     >
@@ -33,7 +33,7 @@ export default function LoginScreen({ navigation }) {
         backgroundColor="#293241"
         translucent={false}
       />
-      <ScrollView contentContainerStyle={{ marginBottom: 50 }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => navigation.goBack()}
@@ -71,19 +71,28 @@ export default function LoginScreen({ navigation }) {
               onChangeText={(text) => setPassword(text)}
               underlineColor="#D6D6D6"
             />
-            <Text style={styles.forgotPassword}>Forgot Password?</Text>
+            <Text
+              onPress={() => navigation.navigate("ForgotPasswordScreen")}
+              style={styles.forgotPassword}
+            >
+              Forgot Password?
+            </Text>
           </View>
 
           <View style={{ marginTop: 25 }}>
             <Button
+              width={WIDTH - 60}
               title="Sign in"
               backColor="#E12836"
               bWidth={0}
-              onpress={() => navigation.navigate("ForgotPasswordScreen")}
+              onpress={() => navigation.navigate("drawer")}
             />
           </View>
 
-          <Text style={styles.fotterText}>
+          <Text
+            onPress={() => navigation.navigate("SignUpScreen")}
+            style={styles.fotterText}
+          >
             Don't have an account?
             <Text
               style={{
@@ -106,9 +115,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#293241",
   },
-  contentContainer: {
-    height: HEIGHT / 15,
-  },
 
   welcomeTitle: {
     color: "#fff",
@@ -129,14 +135,15 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   topImage: {
-    width: WIDTH - 100,
-    height: HEIGHT / 3,
+    width: WIDTH - 120,
+    height: HEIGHT / 2.8,
     alignSelf: "center",
     position: "absolute",
   },
 
   footer: {
-    flex: 1,
+    height: HEIGHT - 100,
+    width: WIDTH,
     backgroundColor: "#fff",
     borderTopLeftRadius: 90,
     marginTop: HEIGHT / 4.5,
@@ -182,10 +189,8 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 14,
     opacity: 0.9,
-
+    marginTop: 100,
     alignSelf: "center",
-    marginRight: 32,
-    marginTop: HEIGHT / 2.5,
   },
 
   backButton: {

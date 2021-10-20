@@ -8,6 +8,7 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 
 const WIDTH = Dimensions.get("window").width;
@@ -17,7 +18,6 @@ import { TextInput } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 
 import Button from "../components/Button";
-import { ScrollView } from "react-native-gesture-handler";
 
 export default function ForgotPasswordScreen({ navigation }) {
   const [email, setEmail] = React.useState("");
@@ -34,7 +34,7 @@ export default function ForgotPasswordScreen({ navigation }) {
         backgroundColor="#293241"
         translucent={false}
       />
-      <ScrollView>
+      <ScrollView showsHorizontalScrollIndicator={false}>
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => navigation.goBack()}
@@ -62,10 +62,14 @@ export default function ForgotPasswordScreen({ navigation }) {
             />
           </View>
 
-          <View style={{flex:0.7,justifyContent:'flex-end'}}>
+          <View style={{ flex: 0.7, justifyContent: "flex-end" }}>
             <Button
-            onpress={() =>navigation.navigate('ResetPasswordScreen')}
-            title="Send" backColor="#E12836" bWidth={0} />
+              onpress={() => navigation.navigate("ResetPasswordScreen")}
+              title="Send"
+              backColor="#E12836"
+              bWidth={0}
+              width={WIDTH - 60}
+            />
           </View>
         </View>
       </ScrollView>
@@ -80,11 +84,11 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    height: HEIGHT,
-    width:WIDTH,
+    height: HEIGHT - 50,
+    width: WIDTH,
     backgroundColor: "#fff",
     borderTopLeftRadius: 90,
-    marginTop:40,
+    marginTop: 40,
   },
 
   input: {
@@ -94,7 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
     marginBottom: 5,
-    marginTop:10,
+    marginTop: 10,
   },
 
   backButton: {
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: 20,
-    marginTop:20,
+    marginTop: 20,
   },
   welcomesubTitle: {
     color: "#7D828B",
@@ -113,17 +117,14 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontSize: 13,
     marginTop: 50,
-    alignSelf:'center'
-
+    alignSelf: "center",
   },
 
-
-  title:
-  {
-      fontSize:28,
-      color:'#fff',
-      lineHeight:30,
-      textAlign:'center',
-      marginTop:10,
-  }
+  title: {
+    fontSize: 28,
+    color: "#fff",
+    lineHeight: 30,
+    textAlign: "center",
+    marginTop: 10,
+  },
 });
